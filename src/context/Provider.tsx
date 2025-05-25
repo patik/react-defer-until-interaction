@@ -17,7 +17,7 @@ export function Provider({ router, timeout = 10000, children }: ProviderProps & 
     const [hasUserTriggeredEvent, setHasUserTriggeredEvent] = useState(false)
     const [areEventListenersCurrentlyActive, setAreEventListenersCurrentlyActive] = useState(false)
     const isTimerDisabledByCaller = useRef(timeout === 0).current
-    const intervalTimer = useRef<ReturnType<typeof setInterval>>()
+    const intervalTimer = useRef<ReturnType<typeof setInterval>>(undefined)
     const [timer, setTimer] = useState(timeout)
     const [hasTimerExpired, setHasTimerExpired] = useState(false)
     const hasInteracted = hasUserTriggeredEvent || hasTimerExpired
