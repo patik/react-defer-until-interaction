@@ -17,7 +17,7 @@ export function Provider({ router, timeout = 10000, children }: ProviderProps & 
     const [hasUserTriggeredEvent, setHasUserTriggeredEvent] = useState(false)
     const [areEventListenersCurrentlyActive, setAreEventListenersCurrentlyActive] = useState(false)
     const isTimerDisabledByCaller = useRef(timeout === 0).current
-    const intervalTimer = useRef<ReturnType<typeof setInterval>>()
+    const intervalTimer = useRef<ReturnType<typeof setInterval>>(undefined)
     const [timer, setTimer] = useState(timeout)
     const [hasTimerExpired, setHasTimerExpired] = useState(false)
     const hasInteracted = hasUserTriggeredEvent || hasTimerExpired
@@ -71,12 +71,9 @@ export function Provider({ router, timeout = 10000, children }: ProviderProps & 
                       return callback()
                   }
                 : () => undefined,
-        [hasInteracted]
+        [hasInteracted],
     )
+    const value = useMemo(() => ({ afterInteraction, hasInteracted }), [afterInteraction, hasInteracted])
 
-    return (
-        <DeferUntilInteractionContext.Provider value={{ afterInteraction, hasInteracted }}>
-            {children}
-        </DeferUntilInteractionContext.Provider>
-    )
+    return <DeferUntilInteractionContext value={value}>{children}</DeferUntilInteractionContext>
 }

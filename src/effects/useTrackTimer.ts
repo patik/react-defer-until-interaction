@@ -8,7 +8,7 @@ export function useTrackTimer({
     setHasTimerExpired,
 }: {
     isTimerDisabledByCaller: boolean
-    intervalTimer: MutableRefObject<NodeJS.Timer | undefined>
+    intervalTimer: MutableRefObject<NodeJS.Timeout | undefined>
     setTimer: Dispatch<SetStateAction<number>>
     timer: number
     setHasTimerExpired: Dispatch<SetStateAction<boolean>>
