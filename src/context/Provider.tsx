@@ -71,7 +71,7 @@ export function Provider({ router, timeout = 10000, children }: ProviderProps & 
                       return callback()
                   }
                 : () => undefined,
-        [hasInteracted]
+        [hasInteracted],
     )
 
     return (

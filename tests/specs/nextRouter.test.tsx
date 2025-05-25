@@ -50,7 +50,7 @@ describe('NextRouter', () => {
             async () => {
                 expect(screen.getByText(/I only appear using the callback/)).toBeVisible()
             },
-            { timeout: 2000 }
+            { timeout: 2000 },
         )
 
         await waitFor(async () => {

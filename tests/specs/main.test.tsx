@@ -26,7 +26,7 @@ describe('Detecting user interaction', () => {
         render(
             <DeferUntilInteractionProvider>
                 <TestComponent />
-            </DeferUntilInteractionProvider>
+            </DeferUntilInteractionProvider>,
         )
 
         await waitFor(async () => {
@@ -55,7 +55,7 @@ describe('Timeout', () => {
         render(
             <DeferUntilInteractionProvider timeout={0}>
                 <TestComponent />
-            </DeferUntilInteractionProvider>
+            </DeferUntilInteractionProvider>,
         )
 
         await waitFor(async () => {
@@ -66,7 +66,7 @@ describe('Timeout', () => {
             async () => {
                 expect(() => screen.getByText(/I only appear using the boolean/)).toThrow()
             },
-            { timeout: 5000 }
+            { timeout: 5000 },
         )
     })
 
@@ -74,7 +74,7 @@ describe('Timeout', () => {
         render(
             <DeferUntilInteractionProvider timeout={3000}>
                 <TestComponent />
-            </DeferUntilInteractionProvider>
+            </DeferUntilInteractionProvider>,
         )
 
         await waitFor(async () => {
@@ -89,7 +89,7 @@ describe('Timeout', () => {
             async () => {
                 expect(screen.getByText(/I only appear using the callback/)).toBeVisible()
             },
-            { timeout: 4000 }
+            { timeout: 4000 },
         )
 
         await waitFor(async () => {
@@ -110,7 +110,7 @@ describe('Timeout', () => {
         render(
             <DeferUntilInteractionProvider timeout={3000}>
                 <TimerTest />
-            </DeferUntilInteractionProvider>
+            </DeferUntilInteractionProvider>,
         )
 
         await userEvent.click(document.body)
