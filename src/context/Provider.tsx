@@ -73,10 +73,7 @@ export function Provider({ router, timeout = 10000, children }: ProviderProps & 
                 : () => undefined,
         [hasInteracted],
     )
+    const value = useMemo(() => ({ afterInteraction, hasInteracted }), [afterInteraction, hasInteracted])
 
-    return (
-        <DeferUntilInteractionContext.Provider value={{ afterInteraction, hasInteracted }}>
-            {children}
-        </DeferUntilInteractionContext.Provider>
-    )
+    return <DeferUntilInteractionContext value={value}>{children}</DeferUntilInteractionContext>
 }

@@ -13,7 +13,9 @@ function InnerTestComponent() {
 
     return (
         <>
-            <button onClick={() => router.replace('/')}>Change route</button>
+            <button type="button" onClick={() => router.replace('/')}>
+                Change route
+            </button>
             <p>You should see me all the time</p>
             {afterInteraction(() => (
                 <p>I only appear using the callback</p>
